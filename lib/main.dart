@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'details.dart';
+import 'newdata.dart';
 
 void main()=>runApp(MaterialApp(
   title: "Api Test",
@@ -37,7 +38,13 @@ class _HomeState extends State<Home> {
         title: Text("My App Bar"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: ()=>Navigator.of(context).push(
+          MaterialPageRoute(
+
+            builder: (BuildContext contex)=> NewData(),
+            
+          ),
+        ),
         child: Icon(Icons.add),
       ),
       body:FutureBuilder<List>(
@@ -52,6 +59,7 @@ class _HomeState extends State<Home> {
           }
           else{
             return CircularProgressIndicator();
+
           }
         },
       ),
