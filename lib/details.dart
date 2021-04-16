@@ -18,6 +18,10 @@ class Details extends StatefulWidget {
 }
 
 class _DetailsState extends State<Details> {
+
+void confirm(){
+  
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +48,7 @@ class _DetailsState extends State<Details> {
             MaterialButton(
               child: Text("Delete"),
               color: Colors.deepPurpleAccent,
-              onPressed: (){},
+              onPressed: ()=>confirm(),
             )
           ],
         ),
