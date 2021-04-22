@@ -24,7 +24,7 @@ class _DetailsState extends State<Details> {
   void delete(){
     var url = "http://192.168.0.103/php/myfolder/deletedata.php";
     http.post(url,body: {
-      'id':widget.list[widget.index],
+      'id':widget.list[widget.index]['id'],
 
     });
   }
@@ -50,6 +50,7 @@ void confirm(){
 
     ],
   );
+   showDialog(builder: (context) => alertDialog, context: context);
 
 }
   @override
@@ -80,7 +81,9 @@ void confirm(){
             MaterialButton(
               child: Text("Delete"),
               color: Colors.deepPurpleAccent,
-              onPressed: ()=>confirm(),
+              onPressed: (){
+                confirm();
+              }
             )
           ],
         ),
