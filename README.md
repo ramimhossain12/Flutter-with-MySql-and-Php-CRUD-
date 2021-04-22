@@ -2,7 +2,7 @@
 
 
 
-# Home Page
+ ## Home Page
 <img src="images/1st.png" width="220" height="420" >
 # Add Data
 <img src="images/add.png" width="220" height="420" >
