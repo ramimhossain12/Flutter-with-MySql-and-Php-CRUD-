@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'dart:convert';
+import 'package:flutter_mysql_crud/editdata.dart';
+import 'package:flutter_mysql_crud/main.dart';
+
 import 'package:http/http.dart' as http;
 
 
@@ -19,8 +20,37 @@ class Details extends StatefulWidget {
 
 class _DetailsState extends State<Details> {
 
+
+  void delete(){
+    var url = "http://192.168.0.103/php/myfolder/deletedata.php";
+    http.post(url,body: {
+      'id':widget.list[widget.index],
+
+    });
+  }
+
 void confirm(){
-  
+
+  AlertDialog alertDialog = new AlertDialog(
+    content: Text("Are You Sure?"),
+    actions: [
+      MaterialButton(
+        child: Text("OK DELETE"),
+        onPressed: (){
+          delete();
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (BuildContext context)=>Home())
+          );
+        },
+      ),
+      MaterialButton(
+        child: Text("CANCEL"),
+        onPressed: (){},
+      ),
+
+    ],
+  );
+
 }
   @override
   Widget build(BuildContext context) {
@@ -43,7 +73,9 @@ void confirm(){
             MaterialButton(
               child: Text("Edit"),
               color: Colors.deepPurpleAccent,
-              onPressed: (){},
+              onPressed: ()=>Navigator.of(context).push(
+                MaterialPageRoute(builder: (BuildContext context)=> Edit(list:widget.list,index:widget.index)),
+              ),
             ),
             MaterialButton(
               child: Text("Delete"),
